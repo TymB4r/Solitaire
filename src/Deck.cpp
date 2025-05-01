@@ -1,10 +1,11 @@
 #include "Deck.h"
-#include <algorithm>  // for std::shuffle
-#include <iostream>
+#include <algorithm>  // for shuffle
 #include <random>     // for random engines
 
-Deck::Deck() = default;
 
+void Deck::wipe() {
+    cards.clear();
+}
 
 void Deck::create() {
     cards.clear();
@@ -34,6 +35,10 @@ void Deck::print_deck() const {
     for (const auto& card : cards) {
         std::cout << card.color << " " << card.suit << " " << card.value << std::endl;
     }
+}
+
+void Deck::append_card(const Card& card) {
+    cards.push_back(card);
 }
 
 Card Deck::deal() {

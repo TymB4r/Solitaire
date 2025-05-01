@@ -61,6 +61,18 @@ build CMakeFiles/Solitaire.dir/src/Deck.cpp.obj: CXX_COMPILER__Solitaire_unscann
   OBJECT_DIR = CMakeFiles\Solitaire.dir
   OBJECT_FILE_DIR = CMakeFiles\Solitaire.dir\src
 
+build CMakeFiles/Solitaire.dir/src/Position.cpp.obj: CXX_COMPILER__Solitaire_unscanned_Debug C$:/Users/tymek/CLionProjects/Solitaire/src/Position.cpp || cmake_object_order_depends_target_Solitaire
+  DEP_FILE = CMakeFiles\Solitaire.dir\src\Position.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles\Solitaire.dir\src
+
+build CMakeFiles/Solitaire.dir/src/Move.cpp.obj: CXX_COMPILER__Solitaire_unscanned_Debug C$:/Users/tymek/CLionProjects/Solitaire/src/Move.cpp || cmake_object_order_depends_target_Solitaire
+  DEP_FILE = CMakeFiles\Solitaire.dir\src\Move.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles\Solitaire.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Solitaire
@@ -69,7 +81,7 @@ build CMakeFiles/Solitaire.dir/src/Deck.cpp.obj: CXX_COMPILER__Solitaire_unscann
 #############################################
 # Link the executable Solitaire.exe
 
-build Solitaire.exe: CXX_EXECUTABLE_LINKER__Solitaire_Debug CMakeFiles/Solitaire.dir/src/main.cpp.obj CMakeFiles/Solitaire.dir/src/Deck.cpp.obj
+build Solitaire.exe: CXX_EXECUTABLE_LINKER__Solitaire_Debug CMakeFiles/Solitaire.dir/src/main.cpp.obj CMakeFiles/Solitaire.dir/src/Deck.cpp.obj CMakeFiles/Solitaire.dir/src/Position.cpp.obj CMakeFiles/Solitaire.dir/src/Move.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Solitaire.dir
