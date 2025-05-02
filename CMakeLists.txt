@@ -8,5 +8,6 @@ add_executable(Solitaire src/main.cpp
         src/Deck.cpp
         src/Position.cpp
         src/Position.h
-        src/Move.cpp
-        src/Move.h)
+        src/UI/Display.cpp
+        src/UI/Display.h
+)

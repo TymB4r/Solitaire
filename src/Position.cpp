@@ -3,7 +3,6 @@
 //
 
 #include "Position.h"
-#include "Move.h"
 
 void Position::clear_game() {
     for (Deck& stack : tableau) {
@@ -26,10 +25,12 @@ void Position::setup() {
             tableau[i].append_card(deck.deal());
         }
     }
-}
+    deck.shuffle();
 
+}
+/*
 // TODO
-void Position::check_move(Move move) {
+bool Position::check_move(Move move) {
 
 }
 
@@ -42,3 +43,4 @@ void Position::undo(Move move) {
 
 }
 
+*/

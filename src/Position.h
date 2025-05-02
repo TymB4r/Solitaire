@@ -7,7 +7,6 @@
 #include <array>
 
 #include "Deck.h"
-#include "Move.h"
 
 class Position {
 public:
@@ -20,12 +19,13 @@ public:
     void clear_game(); // Reset the board
 
     void setup(); // Shuffle the Deck and deal the initial cards to the tableau
-
+    /*
     void undo(Move move); // Undo the last move (go back to the previous position)
 
-    void check_move(Move move); // Checks whether the move user is attempting is legal
+    bool check_move(Move move); // Check whether the move user is attempting is legal
 
-    void make_move(Move move); // Performs the move on the board and potentially updates visible cards
+    void make_move(Move move); // Perform the move on the board and potentially updates visible cards
+    */
 };
 
 
