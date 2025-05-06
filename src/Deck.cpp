@@ -2,8 +2,11 @@
 #include <algorithm>  // for shuffle
 #include <random>     // for random engines
 #include <map>
+#include <optional>
 
-void Card::print_card() const {
+#include "Position.h"
+
+std::string Card::print_card(std::optional<bool> override_face_up) const {
     std::map<std::string, std::string> suit_to_unicode = {
         {"Diamonds", "\u2666"},
         {"Hearts", "\u2665"},
@@ -12,25 +15,34 @@ void Card::print_card() const {
     };
 
     std::map<int, std::string> value_to_rank = {
-        {1, "A "},
-        {2, "2 "},
-        {3, "3 "},
-        {4, "4 "},
-        {5, "5 "},
-        {6, "6 "},
-        {7, "7 "},
-        {8, "8 "},
-        {9, "9 "},
+        {1, "A"},
+        {2, "2"},
+        {3, "3"},
+        {4, "4"},
+        {5, "5"},
+        {6, "6"},
+        {7, "7"},
+        {8, "8"},
+        {9, "9"},
         {10, "10"},
-        {11, "J "},
-        {12, "Q "},
-        {13, "K "}
+        {11, "J"},
+        {12, "Q"},
+        {13, "K"}
     };
-    if (is_face_up) {
-        std::cout << suit_to_unicode[suit] + value_to_rank[value];
-    } else {
-        std::cout << "X";
+    std::string unicode = suit_to_unicode[suit];
+    std::string rank = value_to_rank[value];
+    if (rank.size() == 1) {
+        rank = " " + rank;
     }
+
+    if (override_face_up.has_value() && override_face_up == true) {
+        return rank + unicode;
+    }
+
+    if (is_face_up) {
+        return rank + unicode;
+    }
+    return " * ";
 }
 
 void Deck::wipe() {
@@ -63,13 +75,20 @@ void Deck::shuffle() {
 
 void Deck::print_deck() const {
     for (const auto& card : cards) {
-        card.print_card();
-        std::cout << std::endl;
+        std::cout << card.print_card(true) << std::endl;
     }
 }
 
 void Deck::append_card(const Card& card) {
     cards.push_back(card);
+}
+
+bool Deck::is_empty() const {
+    return cards.empty();
+}
+
+int Deck::deck_size() {
+    return cards.size();
 }
 
 Card Deck::peek(int n) {

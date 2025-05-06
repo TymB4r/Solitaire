@@ -20,4 +20,5 @@ int main()
     game.setup();
     std::cout << std::endl << std::endl;
     deck.print_deck();
+    game.render();
 }

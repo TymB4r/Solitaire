@@ -2,6 +2,7 @@
 #define DECK_H
 
 #include <iostream>
+#include <optional>
 #include <ostream>
 #include <vector>
 #include <string>
@@ -21,7 +22,9 @@ public:
         std::cout << color << " " << suit << " " << value << " " << is_face_up << std::endl;
     }
 
-    void print_card() const; // Print the current card's suit and value in its color
+    // Return the card’s suit and value as a printable string.
+    // If override_face_up is provided, use it to decide whether to show the card; otherwise, use is_face_up.
+    std::string print_card(std::optional<bool> override_face_up = std::nullopt) const;
 };
 
 class Deck {
@@ -35,6 +38,10 @@ public:
     void print_deck() const;                 // Print the current state of the deck in order
 
     void append_card(const Card& card);      // Append a single card to the back of the deck
+
+    bool is_empty() const;                   // Check if the current deck is empty
+
+    int deck_size();
 
     Card peek(int n);                        // Peek at the nth card from the top
 
