@@ -1,35 +1,14 @@
 #include "Deck.h"
 #include <algorithm>  // for shuffle
+#include <iostream>
 #include <random>     // for random engines
 #include <map>
 #include <optional>
 
-#include "Position.h"
+#include "../logic/Position.h"
 
 std::string Card::print_card(std::optional<bool> override_face_up) const {
-    std::map<std::string, std::string> suit_to_unicode = {
-        {"Diamonds", "\u2666"},
-        {"Hearts", "\u2665"},
-        {"Spades", "\u2660"},
-        {"Clubs", "\u2663"}
-    };
-
-    std::map<int, std::string> value_to_rank = {
-        {1, "A"},
-        {2, "2"},
-        {3, "3"},
-        {4, "4"},
-        {5, "5"},
-        {6, "6"},
-        {7, "7"},
-        {8, "8"},
-        {9, "9"},
-        {10, "10"},
-        {11, "J"},
-        {12, "Q"},
-        {13, "K"}
-    };
-    std::string unicode = suit_to_unicode[suit];
+    std::string unicode = suit_to_symbol(suit);
     std::string rank = value_to_rank[value];
     if (rank.size() == 1) {
         rank = " " + rank;
@@ -37,6 +16,11 @@ std::string Card::print_card(std::optional<bool> override_face_up) const {
 
     if (override_face_up.has_value() && override_face_up == true) {
         return rank + unicode;
+    }
+
+    
+    if (override_face_up.has_value() && override_face_up == false) {
+        return " * ";
     }
 
     if (is_face_up) {
@@ -52,13 +36,13 @@ void Deck::wipe() {
 void Deck::create() {
     cards.clear();
 
-    std::vector<std::string> suits = {"Diamonds", "Hearts", "Spades", "Clubs"};
-    for (const std::string& suit: suits) {
-        std::string color;
-        if (suit == "Diamonds" || suit == "Hearts") {
-            color = "Red";
+    std::vector suits = {Suit::DIAMONDS, Suit::HEARTS, Suit::SPADES, Suit::CLUBS};
+    for (Suit suit : suits) {
+        Color color;
+        if (suit == Suit::DIAMONDS || suit == Suit::HEARTS) {
+            color = Color::RED;
         } else {
-            color = "Black";
+            color = Color::BLACK;
         }
 
         for (int i = 1; i < 14; i++) {
@@ -89,6 +73,10 @@ bool Deck::is_empty() const {
 
 int Deck::deck_size() {
     return cards.size();
+}
+
+Card &Deck::access_card(int n) {
+    return cards.at(n);
 }
 
 Card Deck::peek(int n) {
