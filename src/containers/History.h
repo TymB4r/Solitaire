@@ -12,7 +12,7 @@ struct position_snapshot {
     Deck deck; // Current deck
     Deck waste; // Cards drawn from the deck
     int moves = 0; // Counts moves made so far
-    Difficulty difficulty;
+    Difficulty difficulty = Difficulty::UNSET;
 };
 
 class History {
@@ -29,8 +29,8 @@ public:
 
 private:
     int MAX_UNDO_DEPTH; // Default is 3, can be changed by passing a parameter to the constructor
-    int current_max_moves_made = 0;
-    Position& board;
+    int current_max_moves_made = 0; // Needed to check whether 'undo' can be performed, we can go (default) 3 moves back
+    Position& board; // Reference the current position status
     std::vector<position_snapshot> history; // Track all game states after each move
 };
 #endif //METADATA_H

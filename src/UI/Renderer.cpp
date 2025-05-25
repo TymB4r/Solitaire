@@ -29,10 +29,9 @@ void Renderer::update_render_window(const Renderable& new_state) {
 }
 
 void Renderer::render_difficulty_dialogue() {
-    std::cout << "Type in the command \"DIFFICULTY Easy/Hard\"" << std::endl;
     std::cout << "What difficulty would you like to play on?" << std::endl;
-    std::cout << "DIFFICULTY 1 - Easy" << std::endl;
-    std::cout << "DIFFICULTY 2 - Hard" << std::endl;
+    std::cout << "1. Easy" << std::endl;
+    std::cout << "2. Hard" << std::endl;
 }
 
 void Renderer::render_board() {
@@ -43,12 +42,41 @@ void Renderer::render_board() {
 }
 
 void Renderer::render_info_screen() {
-    std::cout << "INFOSCREEN" << std::endl;
-    // TODO create an info-screen
+    std::cout << "\n";
+    std::cout << "==================[ HELP MENU ]==================\n";
+    std::cout << "\n";
+    std::cout << "OBJECTIVE:\n";
+    std::cout << "  Move all cards to the four foundations in\n";
+    std::cout << "  ascending order (Ace to King, by suit).\n";
+    std::cout << "\n";
+    std::cout << "TABLEAU RULES:\n";
+    std::cout << "  - Cards are built in descending order\n";
+    std::cout << "    and alternating colors.\n";
+    std::cout << "  - You can only move a King to an empty column.\n";
+    std::cout << "\n";
+    std::cout << "COMMANDS:\n";
+    std::cout << "  MOVE T1 F1 1   -> Move 1 card from Tableau 1 to Foundation 1\n";
+    std::cout << "  DRAW           -> Draw from the deck\n";
+    std::cout << "  UNDO           -> Undo the last move\n";
+    std::cout << "  RESTART        -> Start a new game\n";
+    std::cout << "  HELP           -> Show this help screen\n";
+    std::cout << "  EXIT           -> Quit the game\n";
+    std::cout << "\n";
+    std::cout << "NOTATION:\n";
+    std::cout << "  T1-T7 -> Tableau columns\n";
+    std::cout << "  F1-F4 -> Foundation piles\n";
+    std::cout << "  W     -> Waste pile\n";
+    std::cout << "\n";
+    std::cout << "=================================================\n";
 }
 
 void Renderer::render_win_screen() {
-    // TODO create a win-screen
+    std::cout << "\n\n\n";
+    std::cout << "*******************************\n";
+    std::cout << "*                             *\n";
+    std::cout << "*        YOU WON THE GAME!    *\n";
+    std::cout << "*                             *\n";
+    std::cout << "*******************************\n\n";
 }
 
 void Renderer::print_tableau() {

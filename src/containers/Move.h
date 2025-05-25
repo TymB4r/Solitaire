@@ -10,7 +10,6 @@ enum class PileType {
     TABLEAU,
     FOUNDATION,
     WASTE,
-    //STOCK, // Not necessary as already handled by DRAW command, worth keeping for future-proofing
     UNKNOWN
 };
 

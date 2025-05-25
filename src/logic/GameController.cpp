@@ -26,6 +26,11 @@ void Commander::get_command() {
     }
 
     int first_space_idx = input_string.find_first_of(' ');
+    if (position.difficulty == Difficulty::UNSET) {
+        command = Command::GET_DIFFICULTY;
+        input = input_string;
+        return;
+    }
     if (first_space_idx == std::string::npos) {
         command = string_to_command(input_string);
     } else {
@@ -109,7 +114,6 @@ void Commander::execute(Renderer& renderer, Command& command, History& history, 
 
         case Command::HELP:
             renderer.update_render_window(Renderable::HELP);
-            // TODO create user information screen
             break;
 
         case Command::QUIT:
