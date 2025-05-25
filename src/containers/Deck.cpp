@@ -5,8 +5,6 @@
 #include <map>
 #include <optional>
 
-#include "../logic/Position.h"
-
 std::string Card::print_card(std::optional<bool> override_face_up) const {
     std::string unicode = suit_to_symbol(suit);
     std::string rank = value_to_rank[value];
@@ -17,7 +15,6 @@ std::string Card::print_card(std::optional<bool> override_face_up) const {
     if (override_face_up.has_value() && override_face_up == true) {
         return rank + unicode;
     }
-
     
     if (override_face_up.has_value() && override_face_up == false) {
         return " * ";

@@ -2,7 +2,6 @@
 // Created by tymek on 24.05.2025.
 //
 
-// Move.cpp
 #include "Move.h"
 #include <string>
 #include <cctype>

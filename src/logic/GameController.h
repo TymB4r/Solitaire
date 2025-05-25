@@ -7,6 +7,7 @@
 #include <string>
 #include "Position.h"
 #include "../UI/Renderer.h"
+#include "../containers/History.h"
 
 enum class Command {
     MOVE, // Move a number of cards between piles
@@ -32,7 +33,7 @@ inline Command string_to_command(const std::string& input) {
 
 class Commander {
 public:
-    explicit Commander(Position& game, Renderer& UI) : position(game), command(), renderer(UI) {}
+    explicit Commander(Position& game, Renderer& UI, History& history) : position(game), command(), renderer(UI), history(history) {}
 
     [[nodiscard]] bool is_running() const; // Check if the game loop should still be going
 
@@ -44,10 +45,11 @@ public:
 
     void quit_game(); // Leave the game loop
 
-    void execute(Renderer& renderer, Command& command, std::string& input); // Call the appropriate functions depending on command type
+    void execute(Renderer& renderer, Command& command, History& history, std::string &rest); // Call the appropriate functions depending on command type
 
 private:
     Position& position; // Include the current position to call methods on
+    History& history;
     Command command; // Command type to call
     Renderer& renderer; // Current rendering instance, keep track of what we need to display
     std::string input; // !!! String handled by each function corresponding to command type !!!

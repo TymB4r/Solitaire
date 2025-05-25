@@ -4,8 +4,6 @@
 
 #include <algorithm>
 #include <iostream>
-#include <ostream>
-#include <sstream>
 #include "Position.h"
 
 
@@ -103,11 +101,6 @@ void Position::apply_move(const Move& move) {
     moves += 1;
     update_visible_cards();
 
-}
-
-void Position::undo() { // TODO
-    // PLAN A - keep only the moves and perform them backwards
-    // PLAN B - (inefficient) keep the entire board states and call them back into place
 }
 
 void Position::update_visible_cards() {

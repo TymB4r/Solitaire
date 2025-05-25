@@ -34,6 +34,7 @@ void Renderer::render_difficulty_dialogue() {
     std::cout << "DIFFICULTY 1 - Easy" << std::endl;
     std::cout << "DIFFICULTY 2 - Hard" << std::endl;
 }
+
 void Renderer::render_board() {
     std::cout << "Current moves: " << board.moves << get_spaces(10) << "Difficulty: " << difficulty_to_string(board.difficulty) << std::endl;
     print_foundations_and_drawn_deck();
@@ -105,6 +106,7 @@ void Renderer::print_foundations_and_drawn_deck() {
         printed += 1;
     }
 }
+
 std::string Renderer::get_spaces(int spaces_count) {
     return std::string(spaces_count, ' ');
 }

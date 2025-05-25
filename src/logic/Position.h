@@ -9,6 +9,7 @@
 #include "../containers/Move.h"
 
 enum class Difficulty {
+    UNSET, // The difficulty hasn't been set yet
     EASY, // Draw 1 card from the stack
     HARD // Draw 3 cards from the stack
 };
@@ -31,7 +32,7 @@ public:
     Deck deck; // Current deck
     Deck waste; // Cards drawn from the deck
     int moves = 0; // Counts moves made so far
-    Difficulty difficulty = Difficulty::EASY;       // Set the default difficulty to easy later to be chosen by the user
+    Difficulty difficulty = Difficulty::UNSET;       // Set the default difficulty to easy later to be chosen by the user
 
     void clear_game(); // Reset the board
 
@@ -51,14 +52,9 @@ public:
 
     void apply_move(const Move& move); // Perform the move on the current position + save current position in history
 
-    void undo(); // Undo the previous move
-
     void update_visible_cards(); // Turn the top cards from the tableau stacks up
 
     [[nodiscard]] int get_largest_stack(); // Get the height of the largest stack in the tableau
-
-private:
-
 };
 
 

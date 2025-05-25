@@ -6,6 +6,7 @@
 #include "Position.h"
 #include "../UI/Renderer.h"
 #include "../containers/Move.h"
+#include "../containers/History.h"
 
 bool Commander::is_running() const {
     return running;
@@ -13,7 +14,7 @@ bool Commander::is_running() const {
 
 void Commander::handle_input() {
     get_command();
-    execute(renderer, command, input);
+    execute(renderer, command, history, input);
 }
 
 void Commander::get_command() {
@@ -34,7 +35,6 @@ void Commander::get_command() {
     }
 }
 
-// In Commander:
 bool Commander::handle_move(const std::string& move_str) {
     Move move;
     if (!parse_move_command(move_str, move)) {
@@ -55,14 +55,20 @@ void Commander::quit_game() {
     running = false;
 }
 
-void Commander::execute(Renderer& renderer, Command& command, std::string& rest) {
+void Commander::execute(Renderer& renderer, Command& command, History& history, std::string& rest) {
     switch (command) {
         case Command::GET_DIFFICULTY:
+            if (position.difficulty != Difficulty::UNSET) {
+                std::cout << "The difficulty has already been chosen!" << std::endl;
+                break;
+            }
             if (rest == "1" or rest == "EASY") {
                 position.difficulty = Difficulty::EASY;
+                history.update(position);
                 renderer.update_render_window(Renderable::BOARD);
             } else if (rest == "2" or rest == "HARD") {
                 position.difficulty = Difficulty::HARD;
+                history.update(position);
                 renderer.update_render_window(Renderable::BOARD);
             } else {
                 std::cout << "Wrong command!" << std::endl;
@@ -72,6 +78,7 @@ void Commander::execute(Renderer& renderer, Command& command, std::string& rest)
         case Command::DRAW:
             position.draw_from_deck();
             renderer.update_render_window(Renderable::BOARD);
+            history.update(position);
             break;
 
         case Command::MOVE:
@@ -83,10 +90,15 @@ void Commander::execute(Renderer& renderer, Command& command, std::string& rest)
             } else {
                 renderer.update_render_window(Renderable::BOARD);
             }
+            history.update(position);
             break;
 
         case Command::UNDO:
-            position.undo();
+            if (position.moves <= history.get_max_moves() - history.get_max_undo_depth()) {
+                std::cout << "Undo limit exceeded!" << std::endl;
+                break;
+            }
+            history.undo();
             renderer.update_render_window(Renderable::BOARD);
             break;
 

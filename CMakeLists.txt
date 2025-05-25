@@ -14,4 +14,6 @@ add_executable(Solitaire src/main.cpp
         src/UI/Renderer.h
         src/containers/Move.cpp
         src/containers/Move.h
+        src/containers/History.cpp
+        src/containers/History.h
 )
