@@ -98,10 +98,10 @@ void Renderer::print_foundations_and_drawn_deck() {
     std::cout << get_spaces(6);
 
     // Print at most 3 recently drawn cards
-    std::cout << "Drawn:";
+    std::cout << "Waste:";
     int printed = 0;
-    while (printed < std::min(board.drawn.deck_size(), 3)) { // Print at most 3 drawn cardsdi
-        std::cout << "[" << board.drawn.peek(printed + 1).print_card() << "]";
+    while (printed < std::min(board.waste.deck_size(), 3)) { // Print at most 3 drawn cardsdi
+        std::cout << "[" << board.waste.peek(printed + 1).print_card() << "]";
         printed += 1;
     }
 }

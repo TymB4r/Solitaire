@@ -79,7 +79,11 @@ void Commander::execute(Renderer& renderer, Command& command, std::string& rest)
                 Command invalid = Command::INVALID;
                 execute(renderer, invalid, rest);
             }
-            renderer.update_render_window(Renderable::BOARD);
+            if (position.check_game()) {
+                renderer.update_render_window(Renderable::WINSCREEN);
+            } else {
+                renderer.update_render_window(Renderable::BOARD);
+            }
             break;
 
         case Command::UNDO:

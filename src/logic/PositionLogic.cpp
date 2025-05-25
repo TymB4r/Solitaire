@@ -17,7 +17,7 @@ void Position::clear_game() {
     for (Deck& stack : foundations) {
         stack.wipe();
     }
-    drawn.wipe();
+    waste.wipe();
     deck.wipe();
     moves = 0;
 }
@@ -42,7 +42,7 @@ void Position::restart() {
 
 bool Position::check_game() {
     for (Deck& foundation : foundations) {
-        if (foundation.peek(1).value != 13) { // Return false if any of the top cards is not a King (13)
+        if (foundation.deck_size() == 0 || foundation.peek(1).value != 13) { // Return false if any of the top cards is not a King (13)
             return false;
         }
         return true;
@@ -64,14 +64,15 @@ void Position::draw_from_deck() {
     }
 
     if (deck.is_empty()) {
-        deck = std::move(drawn);
+        deck = std::move(waste);
         deck.shuffle();
 
     }
     for (int i = 0; i < cards_to_draw; i++) {
         deck.access_card(deck.deck_size() - 1).is_face_up = true;
-        drawn.append_card(deck.deal());
+        waste.append_card(deck.deal());
     }
+    moves += 1;
 }
 
 Deck& Position::get_deck(Pile pile) {
@@ -81,12 +82,12 @@ Deck& Position::get_deck(Pile pile) {
     if (pile.type == PileType::FOUNDATION) {
         return foundations[pile.index-1];
     }
-    if (pile.type == PileType::DRAWN) {
-        return drawn;
+    if (pile.type == PileType::WASTE) {
+        return waste;
     }
 }
 
-void Position::apply_move(const Move& move) { // TODO
+void Position::apply_move(const Move& move) {
     Deck& src_stack = get_deck(move.source);
     Deck& dst_stack = get_deck(move.destination);
 
@@ -99,6 +100,7 @@ void Position::apply_move(const Move& move) { // TODO
         dst_stack.append_card(cards_to_transfer.deal());
     }
 
+    moves += 1;
     update_visible_cards();
 
 }

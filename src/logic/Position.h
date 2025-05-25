@@ -29,7 +29,7 @@ public:
     std::array<Deck, 7> tableau; // 7 stacks of cards in the middle
     std::array<Deck, 4> foundations; // 4 stacks of cards at the finish
     Deck deck; // Current deck
-    Deck drawn; // Cards drawn from the deck
+    Deck waste; // Cards drawn from the deck
     int moves = 0; // Counts moves made so far
     Difficulty difficulty = Difficulty::EASY;       // Set the default difficulty to easy later to be chosen by the user
 
