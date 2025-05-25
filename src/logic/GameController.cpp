@@ -76,10 +76,13 @@ void Commander::execute(Renderer& renderer, Command& command, std::string& rest)
 
         case Command::MOVE:
             if (!handle_move(rest)) { // If the move is valid, perform it on position; else return invalid Command type
-                Command invalid = Command::INVALID;
-                execute(renderer, invalid, rest);
+                std::cout << "Invalid Move!" << std::endl;
             }
-            renderer.update_render_window(Renderable::BOARD);
+            if (position.check_game()) {
+                renderer.update_render_window(Renderable::WINSCREEN);
+            } else {
+                renderer.update_render_window(Renderable::BOARD);
+            }
             break;
 
         case Command::UNDO:

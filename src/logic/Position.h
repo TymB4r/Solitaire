@@ -29,11 +29,9 @@ public:
     std::array<Deck, 7> tableau; // 7 stacks of cards in the middle
     std::array<Deck, 4> foundations; // 4 stacks of cards at the finish
     Deck deck; // Current deck
-    Deck drawn; // Cards drawn from the deck
+    Deck waste; // Cards drawn from the deck
     int moves = 0; // Counts moves made so far
     Difficulty difficulty = Difficulty::EASY;       // Set the default difficulty to easy later to be chosen by the user
-
-    // void render_board(); // Print the current state of the game to the console
 
     void clear_game(); // Reset the board
 
@@ -60,11 +58,6 @@ public:
     [[nodiscard]] int get_largest_stack(); // Get the height of the largest stack in the tableau
 
 private:
-
-    // void print_foundations_drawn_deck();  // Print the current state of foundations, top deck card and drawn stack
-
-    // void print_tableau();  // Print the current state of the tableau
-
 
 };
 
