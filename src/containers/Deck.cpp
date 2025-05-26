@@ -11,15 +11,12 @@ std::string Card::print_card(std::optional<bool> override_face_up) const {
     if (rank.size() == 1) {
         rank = " " + rank;
     }
-
     if (override_face_up.has_value() && override_face_up == true) {
         return rank + unicode;
     }
-    
     if (override_face_up.has_value() && override_face_up == false) {
         return " * ";
     }
-
     if (is_face_up) {
         return rank + unicode;
     }
@@ -68,7 +65,7 @@ bool Deck::is_empty() const {
     return cards.empty();
 }
 
-int Deck::deck_size() {
+int Deck::deck_size() const {
     return cards.size();
 }
 
@@ -76,8 +73,8 @@ Card &Deck::access_card(int n) {
     return cards.at(n);
 }
 
-Card Deck::peek(int n) {
-    return cards[cards.size() - n];
+Card Deck::peek(int n) const {
+    return cards.at(cards.size() - n);
 }
 
 Card Deck::deal() {

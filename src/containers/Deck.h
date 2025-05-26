@@ -6,10 +6,9 @@
 #include <vector>
 #include <string>
 
-enum class Suit {DIAMONDS, HEARTS, SPADES, CLUBS};
+enum class Suit {DIAMONDS, HEARTS, SPADES, CLUBS, INVALID};
 enum class Color {RED, BLACK};
 
-// Helper function version
 inline std::string suit_to_symbol(Suit suit) {
     switch (suit) {
         case Suit::DIAMONDS: return "\u2666";
@@ -36,13 +35,12 @@ inline std::map<int, std::string> value_to_rank = {
     {13, "K"}
 };
 
-
 class Card {
 public:
-    Color color; // "Red", "Black"
-    Suit suit; // "Diamonds", "Hearts", "Spades", "Clubs"
-    int value; // 1: ACE, 2-10, 11-13: J-K
-    bool is_face_up = false; // Store whether a card is currently visible to the player
+    Color color;                           // "Red", "Black"
+    Suit suit;                             // "Diamonds", "Hearts", "Spades", "Clubs"
+    int value;                             // 1: ACE, 2-10, 11-13: J-K
+    bool is_face_up = false;               // Store whether a card is currently visible to the player
 
     Card(Color color, Suit suit, int value)
         : color(color), suit(suit), value(value) {}
@@ -54,28 +52,20 @@ public:
 
 class Deck {
 public:
-    void wipe();                             // Wipe all cards from the current deck
+    void wipe();                            // Wipe all cards from the current deck
+    void create();                          // Create a new deck of 52 cards
+    void shuffle();                         // Shuffle the deck randomly
+    void print_deck() const;                // Print the current state of the deck in order
+    void append_card(const Card& card);     // Append a single card to the back of the deck
 
-    void create();                           // Create a new deck of 52 cards
-
-    void shuffle();                          // Shuffle the deck randomly
-
-    void print_deck() const;                 // Print the current state of the deck in order
-
-    void append_card(const Card& card);      // Append a single card to the back of the deck
-
-    [[nodiscard]] bool is_empty() const;     // Check if the current deck is empty
-
-    int deck_size();
-
-    Card& access_card(int n);                // Access the nth card and allow modifying it
-
-    Card peek(int n);                        // Peek at the nth card from the top
-
-    Card deal();                             // Deal the top card and remove it from the deck
+    [[nodiscard]] bool is_empty() const;    // Check if the current deck is empty
+    [[nodiscard]] int deck_size() const;    // Return deck size
+    Card& access_card(int n);               // Access the nth card and allow modifying it
+    [[nodiscard]] Card peek(int n) const;   // Peek at the nth card from the top (const since no modification)
+    Card deal();                            // Deal the top card and remove it from the deck
 
 private:
-    std::vector<Card> cards;  // Store cards in a vector
+    std::vector<Card> cards;
 };
 
 #endif // DECK_H

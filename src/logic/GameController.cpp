@@ -1,12 +1,13 @@
 //
 // Created by tymek on 16.05.2025.
 //
-#include <iostream>
+
 #include "GameController.h"
 #include "Position.h"
 #include "../UI/Renderer.h"
 #include "../containers/Move.h"
 #include "../containers/History.h"
+#include <iostream>
 
 bool Commander::is_running() const {
     return running;
@@ -42,15 +43,8 @@ void Commander::get_command() {
 
 bool Commander::handle_move(const std::string& move_str) {
     Move move;
-    if (!parse_move_command(move_str, move)) {
-        // std::cout << "Invalid move syntax." << std::endl;
-        return false;
-    }
-
-    if (!position.is_move_valid(move)) {
-        // std::cout << "Illegal move." << std::endl;
-        return false;
-    }
+    if (!parse_move_command(move_str, move)) return false;
+    if (!position.check_move_legality(move)) return false;
 
     position.apply_move(move);
     return true;

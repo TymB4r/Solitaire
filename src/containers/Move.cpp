@@ -21,8 +21,7 @@ Pile Pile::from_string(const std::string& str) {
     switch (t) {
         case 'T': return {PileType::TABLEAU, idx};
         case 'F': return {PileType::FOUNDATION, idx};
-        case 'W': return {PileType::WASTE, -1};
-        // case 'S': return {PileType::STOCK, -1};
+        case 'W': return {PileType::WASTE, 1};
         default:  return {PileType::UNKNOWN, -1};
     }
 }

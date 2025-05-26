@@ -3,7 +3,6 @@
 //
 
 #include "History.h"
-
 #include <iostream>
 #include <ostream>
 
