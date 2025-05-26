@@ -1,3 +1,0 @@
-C:/Users/tymek/CLionProjects/Solitaire/cmake-build-debug/CMakeFiles/Solitaire.dir
-C:/Users/tymek/CLionProjects/Solitaire/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/tymek/CLionProjects/Solitaire/cmake-build-debug/CMakeFiles/rebuild_cache.dir
