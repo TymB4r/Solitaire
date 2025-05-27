@@ -1,5 +1,5 @@
-#ifndef METADATA_H
-#define METADATA_H
+#ifndef HISTORY_H
+#define HISTORY_H
 #include "../logic/Position.h"
 
 struct position_snapshot {
@@ -29,4 +29,4 @@ private:
     Position& board; // Reference the current position status
     std::vector<position_snapshot> history; // Track all game states after each move
 };
-#endif //METADATA_H
+#endif //HISTORY_H
