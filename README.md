@@ -1,4 +1,4 @@
-**# Klondike Solitaire (C++ Console)
+# Klondike Solitaire (C++ Console)
 
 A C++20 console implementation of Klondike Solitaire with basic features including undo support (up to 3 moves). Built using CMake 3.29+.
 
