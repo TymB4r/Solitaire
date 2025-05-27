@@ -10,23 +10,27 @@ A C++20 console implementation of Klondike Solitaire with basic features includi
 
 ## Build Instructions
 
-1. Create a build directory and run CMake:  
+1. Navigate to the project directory (where `CMakeLists.txt` is located):
+   ```bash
+   cd path/to/your/klondike-solitaire
+
+2. Create a build directory and run CMake:  
    _(Only if the directory does not exist)_
    ```bash
    mkdir build
    ```
 
-2. Run configuration:
+3. Run configuration:
    ```bash
    cmake -S . -B build -G "MinGW Makefiles"
    ```
 
-3. Build the project:
+4. Build the project:
    ```bash
    cmake --build build
    ```
 
-4. Run the built executable:
+5. Run the built executable:
    ```bash
    build/Solitaire.exe
    ```
