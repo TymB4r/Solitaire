@@ -1,6 +1,6 @@
 [Back to README](README.md)
 
-## `MOVE` Command Syntax
+# `MOVE` Command Syntax
 
 - `MOVE` — Keyword indicating a move operation
 - `<FROM>` — Source pile to move cards from
@@ -11,11 +11,11 @@
 
 ## Pile Types
 
-| Symbol | Meaning                   | Index Range / Notes                    |
-|--------|---------------------------|----------------------------------------|
-| `T`    | Tableau (columns)         | Numbered from 1 to 7 (e.g., `T1`, `T3`)|
-| `F`    | Foundation piles          | Numbered from 1 to 4 (e.g., `F2`, `F4`)|
-| `W`    | Waste pile (from stock)   | No index; always a single pile         |
+| Symbol | Meaning                 | Index Range / Notes                    |
+|--------|-------------------------|----------------------------------------|
+| `T`    | Tableau (columns)       | Numbered from 1 to 7 (e.g., `T1`, `T3`)|
+| `F`    | Foundation piles        | Numbered from 1 to 4 (e.g., `F2`, `F4`)|
+| `W`    | Waste pile (from stock) | No index; always a single pile         |
 
 ---
 
@@ -23,9 +23,10 @@
 
 - `FROM` and `TO` must include the pile type symbol and, if applicable, a number (e.g., `T3`, `F1`).
 - `W` (Waste) does not have a number since there is only one waste pile.
-- `[COUNT]` is only needed when moving multiple cards — allowed only between tableau columns.
-- Moving cards between foundation piles is not allowed.
-- Moving cards to or from the waste pile (except via `DRAW`) is not allowed.
+- `[COUNT]` is only needed when moving multiple cards — allowed **only** between tableau columns (`T -> T`).
+- ✅ You **can move cards from the waste pile** to tableau or foundation piles.
+- ❌ You **cannot move cards to the waste pile** directly. The waste pile only receives cards via the `DRAW` command from the stock.
+- ❌ Moving cards between foundation piles is not allowed.
 
 ---
 
@@ -55,9 +56,10 @@
 
 ## Errors and Limitations
 
-- Invalid command format (e.g., missing pile index where required)
-- Attempt to move multiple cards outside tableau columns
-- Illegal moves (e.g., card does not follow suit or rank rules)
-- Attempt to move to or from a non-existent pile
+- ❌ Invalid command format (e.g., missing pile index where required)
+- ❌ Attempt to move multiple cards outside tableau columns
+- ❌ Illegal moves (e.g., card does not follow suit or rank rules)
+- ❌ Attempt to move to or from a non-existent pile
+- ❌ Attempt to move to the waste pile manually
 
 The program will display an appropriate error message if a move is invalid.
