@@ -1,4 +1,4 @@
-# Klondike Solitaire (C++ Console)
+**# Klondike Solitaire (C++ Console)
 
 A C++20 console implementation of Klondike Solitaire with basic features including undo support (up to 3 moves). Built using CMake 3.29+.
 
@@ -10,32 +10,31 @@ A C++20 console implementation of Klondike Solitaire with basic features includi
 
 ## Build Instructions
 
-1. Clone the repository and enter the directory:
+1. Create a build directory and run CMake:
 
     ```bash
-    git clone <repo-url>
-    cd Solitaire
+    mkdir build (if the directory does not exist)
     ```
 
-2. Create a build directory and run CMake:
+2. Run configuration:
 
     ```bash
-    mkdir build
-    cd build
-    cmake ..
+    cmake -S . -B build -G "MinGW Makefiles" .
     ```
 
-3. Build the project:
+3. Build the project (from project directory):
 
     ```bash
-    cmake --build .
+    cmake --build build
     ```
 
-4. Run the game (from inside the build directory):
+4. Run the built executable:
 
     ```bash
-    ./Solitaire
+    build/Solitaire.exe
     ```
+
+
 
 ## How to Play
 
@@ -78,7 +77,5 @@ The game will print the current board state and list available commands after ea
     - `Position.*` — Models card positions (tableau, foundations, etc.)
 
 - `UI/`
-    - `Renderer.*` — Responsible for displaying the current UI state
-
-## Notes
-- Output is optimized for a standard 80x24 terminal. Resize if formatting is off.
+    - `Renderer.*` — Responsible for displaying the current UI state**
+    
