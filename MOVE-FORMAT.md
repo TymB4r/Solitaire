@@ -1,60 +1,63 @@
+[Back to README](README.md)
 
-- `MOVE` — słowo kluczowe oznaczające ruch przeniesienia kart
-- `<FROM>` — źródłowy stos, z którego przenosimy karty
-- `<TO>` — docelowy stos, do którego przenosimy karty
-- `[COUNT]` — opcjonalna liczba kart do przeniesienia (domyślnie 1)
+## `MOVE` Command Syntax
 
----
-
-## Opis stosów
-
-| Symbol | Znaczenie                 | Zakres indeksów / Uwagi                |
-|--------|--------------------------|---------------------------------------|
-| `T`    | Tableau (kolumny)        | Numerowane od 1 do 7 (np. T1, T3)    |
-| `F`    | Foundation (fundamenty)  | Numerowane od 1 do 4 (np. F2, F4)    |
-| `W`    | Waste (odkryta karta z talii) | Bez indeksu, zawsze jeden stos      |
+- `MOVE` — Keyword indicating a move operation
+- `<FROM>` — Source pile to move cards from
+- `<TO>` — Destination pile to move cards to
+- `[COUNT]` — Optional number of cards to move (defaults to 1)
 
 ---
 
-## Szczegóły
+## Pile Types
 
-- `FROM` i `TO` muszą zawierać symbol stosu oraz, jeśli dotyczy, numer stosu (np. `T3`, `F1`).
-- `W` (Waste) nie ma numeru, bo jest jeden stos waste.
-- `[COUNT]` jest potrzebne tylko przy przenoszeniu wielu kart jednocześnie, możliwe tylko między tableau (T).
-- Przenoszenie kart między fundamentami jest niedozwolone.
-- Przenoszenie kart na waste lub z waste do talii (stock) jest niedozwolone (poza komendą `DRAW`).
-
----
-
-## Dozwolone ruchy
-
-| FROM  | TO    | COUNT   | Uwagi                               |
-|-------|-------|---------|------------------------------------|
-| `Tn`  | `Tm`  | 1..n    | Przenoszenie sekwencji kart (COUNT)|
-| `Tn`  | `Fm`  | 1       | Przenoszenie pojedynczej karty     |
-| `W`   | `Tm`  | 1       | Przenoszenie pojedynczej karty     |
-| `W`   | `Fm`  | 1       | Przenoszenie pojedynczej karty     |
-| `Fn`  | `Tm`  | 1       | Cofnięcie ruchu z fundamentu (opcjonalne) |
+| Symbol | Meaning                   | Index Range / Notes                    |
+|--------|---------------------------|----------------------------------------|
+| `T`    | Tableau (columns)         | Numbered from 1 to 7 (e.g., `T1`, `T3`)|
+| `F`    | Foundation piles          | Numbered from 1 to 4 (e.g., `F2`, `F4`)|
+| `W`    | Waste pile (from stock)   | No index; always a single pile         |
 
 ---
 
-## Przykłady
+## Details
 
-| Komenda       | Znaczenie                                             |
-|---------------|-------------------------------------------------------|
-| `MOVE T4 T1 3`| Przenieś 3 karty z tableau nr 4 do tableau nr 1       |
-| `MOVE T7 F2`  | Przenieś 1 kartę z tableau nr 7 do fundamentu nr 2    |
-| `MOVE W T3`   | Przenieś kartę z waste do tableau nr 3                 |
-| `MOVE W F1`   | Przenieś kartę z waste do fundamentu nr 1               |
-| `MOVE F3 T5`  | Przenieś kartę z fundamentu nr 3 do tableau nr 5 (undo) |
+- `FROM` and `TO` must include the pile type symbol and, if applicable, a number (e.g., `T3`, `F1`).
+- `W` (Waste) does not have a number since there is only one waste pile.
+- `[COUNT]` is only needed when moving multiple cards — allowed only between tableau columns.
+- Moving cards between foundation piles is not allowed.
+- Moving cards to or from the waste pile (except via `DRAW`) is not allowed.
 
 ---
 
-## Błędy i ograniczenia
+## Allowed Moves
 
-- Niepoprawny format komendy (np. brak numeru stosu tam gdzie jest wymagany)
-- Próba przeniesienia wielu kart poza tableau
-- Ruchy niezgodne z zasadami gry (np. karta o nieodpowiednim kolorze lub wartości)
-- Próba przeniesienia na nieistniejący stos
+| FROM | TO  | COUNT | Notes                                    |
+|------|-----|-------|------------------------------------------|
+| `T`  | `T` | 1..n  | Move a sequence of cards (`COUNT`)       |
+| `T`  | `F` | 1     | Move a single card to a foundation       |
+| `W`  | `T` | 1     | Move one card from waste to tableau      |
+| `W`  | `F` | 1     | Move one card from waste to foundation   |
+| `F`  | `T` | 1     | Move one card from foundation to tableau |
 
-Program zwróci stosowny komunikat błędu.
+---
+
+## Examples
+
+| Command         | Meaning                                           |
+|-----------------|---------------------------------------------------|
+| `MOVE T4 T1 3`  | Move 3 top cards from tableau 4 to tableau 1      |
+| `MOVE T7 F2`    | Move 1 card from tableau 7 to foundation 2        |
+| `MOVE W T3`     | Move 1 card from the waste to tableau 3           |
+| `MOVE W F1`     | Move 1 card from the waste to foundation 1        |
+| `MOVE F3 T5`    | Move 1 card from foundation 3 to tableau 5 (undo) |
+
+---
+
+## Errors and Limitations
+
+- Invalid command format (e.g., missing pile index where required)
+- Attempt to move multiple cards outside tableau columns
+- Illegal moves (e.g., card does not follow suit or rank rules)
+- Attempt to move to or from a non-existent pile
+
+The program will display an appropriate error message if a move is invalid.

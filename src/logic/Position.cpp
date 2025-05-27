@@ -55,7 +55,7 @@ int Position::get_largest_stack() {
 
 bool Position::check_move_legality(Move& move) {
     PileType src_type = move.source.type, dst_type = move.destination.type;
-    Deck& src_deck = get_deck(move.source), dst_deck = get_deck(move.destination);
+    Deck dst_deck = get_deck(move.destination);
     if (!check_pile_existance(move.source)) return false;
     if (!check_pile_existance(move.destination)) return false;
     if (move.destination.type == PileType::WASTE) return false;
@@ -139,6 +139,7 @@ Deck& Position::get_deck(Pile pile) {
     if (pile.type == PileType::WASTE) {
         return waste;
     }
+    return waste;
 }
 
 void Position::apply_move(const Move& move) {
