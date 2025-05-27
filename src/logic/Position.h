@@ -1,7 +1,3 @@
-//
-// Created by tymek on 01.05.2025.
-//
-
 #ifndef POSITION_H
 #define POSITION_H
 

@@ -1,7 +1,3 @@
-//
-// Created by tymek on 24.05.2025.
-//
-
 #include "Move.h"
 #include <string>
 #include <cctype>

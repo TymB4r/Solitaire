@@ -1,7 +1,3 @@
-//
-// Created by tymek on 24.05.2025.
-//
-
 #ifndef MOVE_H
 #define MOVE_H
 #include <string>

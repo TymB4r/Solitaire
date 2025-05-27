@@ -1,7 +1,3 @@
-//
-// Created by tymek on 25.05.2025.
-//
-
 #ifndef METADATA_H
 #define METADATA_H
 #include "../logic/Position.h"

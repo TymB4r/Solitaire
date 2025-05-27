@@ -1,7 +1,3 @@
-//
-// Created by tymek on 16.05.2025.
-//
-
 #include "Renderer.h"
 #include <iostream>
 

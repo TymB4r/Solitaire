@@ -1,7 +1,3 @@
-//
-// Created by tymek on 25.05.2025.
-//
-
 #include "History.h"
 #include <iostream>
 #include <ostream>

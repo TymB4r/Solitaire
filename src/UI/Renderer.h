@@ -1,7 +1,3 @@
-//
-// Created by tymek on 16.05.2025.
-//
-
 #ifndef RENDERER_H
 #define RENDERER_H
 #include "../logic/Position.h"
