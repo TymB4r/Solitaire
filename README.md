@@ -12,7 +12,7 @@ A C++ console implementation of Klondike Solitaire with basic features including
 
 1. Navigate to the project directory (where `CMakeLists.txt` is located):
    ```bash
-   cd path/to/your/klondike-solitaire
+   cd path/to/your/Solitaire
 
 2. Create a build directory and run CMake:  
    _(Only if the directory does not exist)_
@@ -40,15 +40,15 @@ A C++ console implementation of Klondike Solitaire with basic features including
 The game is played entirely via text commands in the terminal. Available commands:
 
 - `DRAW`  
-  Draw the next card from the stock.
+  Draw the next card from the stock and move it to waste.
 
 - `MOVE <src> <dst> [count]`  
   Move a card or stack from one location to another.  
-  Use the game's printed identifiers (e.g., `W`, `T3`, `F2`).  
+  Use the game's stack identifiers (e.g., `W`, `T3`, `F2`).  
   Click [here](MOVE-FORMAT.md) to see more about the move format.
 
 - `UNDO`  
-  Undo the most recent move (up to 3 previous moves are stored).
+  Undo the most recent move (up to 3 moves).
 
 - `RESTART`  
   Restart the current game from a new shuffle.
@@ -58,8 +58,6 @@ The game is played entirely via text commands in the terminal. Available command
 
 - `QUIT`  
   Exit the application.
-
-The game will print the current board state and list available commands after each move.
 
 ## Project Structure
 
