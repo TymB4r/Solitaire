@@ -106,6 +106,10 @@ void Commander::execute(Renderer& renderer, Command& command, History& history, 
             renderer.update_render_window(Renderable::HELP);
             break;
 
+        case Command::BACK:
+            renderer.update_render_window(Renderable::BOARD);
+            break;
+
         case Command::QUIT:
             quit_game();
             break;

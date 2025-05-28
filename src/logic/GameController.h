@@ -13,6 +13,7 @@ enum class Command {
     RESTART,        // Reset the current position and start again
     HELP,           // Bring up command/mechanics tutorial
     QUIT,           // Quit the current game and the program
+    BACK,           // Exit the help window and go back to the game
     GET_DIFFICULTY, // Get input difficulty from the user
     INVALID         // Case where the input command wasn't anything listed above
 };
@@ -23,6 +24,7 @@ inline Command string_to_command(const std::string& input) {
     if (input == "UNDO") return Command::UNDO;
     if (input == "RESTART") return Command::RESTART;
     if (input == "HELP") return Command::HELP;
+    if (input == "BACK") return Command::BACK;
     if (input == "QUIT") return Command::QUIT;
     if (input == "DIFFICULTY") return Command::GET_DIFFICULTY;
     return Command::INVALID;

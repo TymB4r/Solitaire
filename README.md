@@ -44,7 +44,7 @@ The game is played entirely via text commands in the terminal. Available command
 
 - `MOVE <src> <dst> <count>`  
   Move a card or stack from one location to another.  
-  Use the game's printed identifiers (e.g., `W1`, `T3`, `F2`).  
+  Use the game's printed identifiers (e.g., `W`, `T3`, `F2`).  
   Click [here](MOVE-FORMAT.md) to see more about the move format.
 
 - `UNDO`  

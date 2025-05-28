@@ -63,6 +63,7 @@ void Renderer::render_info_screen() {
     std::cout << "  F1-F4 -> Foundation piles\n";
     std::cout << "  W     -> Waste pile\n";
     std::cout << "\n";
+    std::cout << "Enter command BACK to return to game\n";
     std::cout << "=================================================\n";
 }
 
@@ -103,8 +104,9 @@ void Renderer::print_tableau() {
 void Renderer::print_foundations_and_drawn_deck() {
     // Print top cards from the foundation stacks
     std::cout << "Foundations:";
-    for (Deck& stack : board.foundations) {
-        std::string current_foundation = "   ";
+    for (int i = 0; i < board.foundations.size(); i++) {
+        Deck& stack = board.foundations.at(i);
+        std::string current_foundation = " " + suit_to_symbol(foundation_to_suit(i + 1)) + " ";
         if (!stack.is_empty()) {
             current_foundation = stack.peek(1).print_card();
         }
