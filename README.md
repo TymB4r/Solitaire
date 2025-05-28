@@ -1,6 +1,6 @@
 # Klondike Solitaire (C++ Console)
 
-A C++20 console implementation of Klondike Solitaire with basic features including undo support (up to 3 moves). Built using CMake 3.29+.
+A C++ console implementation of Klondike Solitaire with basic features including undo support (up to 3 moves). Built using CMake.
 
 ## Requirements
 
@@ -42,7 +42,7 @@ The game is played entirely via text commands in the terminal. Available command
 - `DRAW`  
   Draw the next card from the stock.
 
-- `MOVE <src> <dst> <count>`  
+- `MOVE <src> <dst> [count]`  
   Move a card or stack from one location to another.  
   Use the game's printed identifiers (e.g., `W`, `T3`, `F2`).  
   Click [here](MOVE-FORMAT.md) to see more about the move format.
