@@ -11,11 +11,8 @@ std::string Card::print_card(std::optional<bool> override_face_up) const {
     if (rank.size() == 1) {
         rank = " " + rank;
     }
-    if (override_face_up.has_value() && override_face_up == true) {
-        return rank + unicode;
-    }
-    if (override_face_up.has_value() && override_face_up == false) {
-        return " * ";
+    if (override_face_up) {
+        return *override_face_up ? rank + unicode : " * ";
     }
     if (is_face_up) {
         return rank + unicode;

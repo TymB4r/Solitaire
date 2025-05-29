@@ -4,15 +4,17 @@ A C++ console implementation of Klondike Solitaire with basic features including
 
 ## Requirements
 
-- C++20-compatible compiler (e.g., `g++ 11+`, `clang++ 12+`, or MSVC)
-- [CMake](https://cmake.org/download/) version 3.29 or newer
-- A terminal that supports basic ANSI output
+- A C++20-compatible compiler (for example, `g++` version 11 or newer, `clang++` version 12 or newer, or Microsoft Visual C++)
+- `mingw32-make.exe` (recommended to install via [MSYS2](https://www.msys2.org/); typically located in the `./ucrt64/bin` directory)
+- [CMake](https://cmake.org/download/) version 3.29 or later
+- A terminal that supports basic ANSI escape codes for colored output
 
 ## Build Instructions
 
 1. Navigate to the project directory (where `CMakeLists.txt` is located):
    ```bash
    cd path/to/your/Solitaire
+   ```
 
 2. Create a build directory and run CMake:  
    _(Only if the directory does not exist)_
