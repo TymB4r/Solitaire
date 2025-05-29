@@ -41,10 +41,10 @@ A C++ console implementation of Klondike Solitaire with basic features including
 
 The game is played entirely via text commands in the terminal. Available commands:
 
-- `DRAW`  
+- `DRAW` or `D`  
   Draw the next card from the stock and move it to waste.
 
-- `MOVE <src> <dst> [count]`  
+- `MOVE <src> <dst> [count]` or `M <src> <dst> [count]`  
   Move a card or stack from one location to another.  
   Use the game's stack identifiers (e.g., `W`, `T3`, `F2`).  
   Click [here](MOVE-FORMAT.md) to see more about the move format.

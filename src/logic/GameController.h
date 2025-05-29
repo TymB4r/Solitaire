@@ -19,14 +19,13 @@ enum class Command {
 };
 
 inline Command string_to_command(const std::string& input) {
-    if (input == "MOVE") return Command::MOVE;
-    if (input == "DRAW") return Command::DRAW;
+    if (input == "MOVE" || input == "M") return Command::MOVE;
+    if (input == "DRAW" || input == "D") return Command::DRAW;
     if (input == "UNDO") return Command::UNDO;
     if (input == "RESTART") return Command::RESTART;
     if (input == "HELP") return Command::HELP;
     if (input == "BACK") return Command::BACK;
     if (input == "QUIT") return Command::QUIT;
-    if (input == "DIFFICULTY") return Command::GET_DIFFICULTY;
     return Command::INVALID;
 }
 

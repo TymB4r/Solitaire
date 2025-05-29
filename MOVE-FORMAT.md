@@ -2,7 +2,7 @@
 
 # `MOVE` Command Syntax
 - #### `MOVE <FROM> <TO> [COUNT]`
-- `MOVE` — Keyword indicating a move operation
+- `MOVE` or  `M` — Keyword indicating a move operation
 - `<FROM>` — Source pile to move cards from
 - `<TO>` — Destination pile to move cards to
 - `[COUNT]` — Optional number of cards to move (defaults to 1)
