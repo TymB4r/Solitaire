@@ -63,8 +63,7 @@ The game is played entirely via text commands in the terminal. Available command
 
 ## Project Structure
 
-- `main.cpp`  
-  Entry point and main loop
+- `main.cpp` — Entry point and main loop
 
 - `containers/`
     - `Deck.*` — Manages the card deck
