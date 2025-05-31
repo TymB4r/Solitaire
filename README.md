@@ -9,34 +9,6 @@ A C++ console implementation of Klondike Solitaire with basic features including
 - [CMake](https://cmake.org/download/) version 3.29 or later
 - A terminal that supports basic ANSI escape codes for colored output
 
-## Build Instructions
-
-1. Navigate to the project directory (where `CMakeLists.txt` is located):
-   ```bash
-   cd path/to/your/Solitaire
-   ```
-
-2. Create a build directory and run CMake:  
-   _(Only if the directory does not exist)_
-   ```bash
-   mkdir build
-   ```
-
-3. Run configuration:
-   ```bash
-   cmake -S . -B build -G "MinGW Makefiles"
-   ```
-
-4. Build the project:
-   ```bash
-   cmake --build build
-   ```
-
-5. Run the built executable:
-   ```bash
-   build/Solitaire.exe
-   ```
-
 ## How to Play
 
 The game is played entirely via text commands in the terminal. Available commands:
@@ -59,7 +31,24 @@ The game is played entirely via text commands in the terminal. Available command
   Display a brief command guide during gameplay.
 
 - `QUIT`  
-  Exit the application.
+  Exit the application.  
+
+## Build Instructions
+
+1. Navigate to the project directory (where `CMakeLists.txt` is located):
+   ```bash
+   cd path/to/your/Solitaire
+   ```
+
+2. Run build.bat script in cmd and build the project
+    ```bash
+    build.bat
+   ```
+
+3. Run the built executable:
+   ```bash
+   build/Solitaire.exe
+   ```
 
 ## Project Structure
 
